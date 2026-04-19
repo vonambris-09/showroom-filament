@@ -1,0 +1,26 @@
+{
+  "entities": {
+    "Material": {
+      "title": "3D Printing Material",
+      "description": "Details about a specific filament or resin in the showroom.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string", "description": "Display name of the material" },
+        "brand": { "type": "string", "description": "Manufacturer or brand name" },
+        "type": { "type": "string", "description": "Category like PLA, PETG, ABS, etc." },
+        "colorName": { "type": "string", "description": "Common name of the color" },
+        "hexColor": { "type": "string", "format": "color", "description": "Hex code for the color dot" },
+        "imageUrl": { "type": "string", "format": "uri", "description": "URL to the model image" },
+        "inStock": { "type": "boolean", "description": "True if available for sale" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["name", "brand", "type", "colorName", "imageUrl"]
+    }
+  },
+  "firestore": {
+    "/materials/{materialId}": {
+      "schema": "Material",
+      "description": "The main collection of 3D printing materials."
+    }
+  }
+}
